@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>All Chat History</title>
+  <head>
+    <title>All Chat History</title>
 
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="sidebar">
+        <button onclick="location.href='/'">⬅ Back to Chat</button>
+        <button class="danger" onclick="deleteAll()">🗑 Delete All</button>
+      </div>
 
-  <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+      <div class="chat-area history-page">
+        <h2 style="padding: 10px">📜 All Conversations</h2>
 
-<div class="app">
-  <div class="sidebar">
-    <button onclick="location.href='/'">⬅ Back to Chat</button>
-    <button class="danger" onclick="deleteAll()">🗑 Delete All</button>
-    
-  </div>
+        {% for convo in conversations %}
+        <div style="padding: 10px; border-bottom: 1px solid #334155">
+          <h3>{{ convo.title }}</h3>
+          {% for msg in convo.messages.all %}
+          <a href="/?c={{ convo.id }}" class="history-link">
+            <div class="{{ msg.role }} history-preview">
+              {{ msg.content|truncatechars:220 }}
+              <div class="read-more">Click chat to read more →</div>
+            </div>
+          </a>
 
-  <div class="chat-area">
-    <h2 style="padding:10px;">📜 All Conversations</h2>
-
-    {% for convo in conversations %}
-      <div style="padding:10px; border-bottom:1px solid #334155;">
-        <h3>{{ convo.title }}</h3>
-        {% for msg in convo.messages.all %}
-          <div class="{{ msg.role }}">
-            {{ msg.content|linebreaks }}
-          </div>
+          {% endfor %}
+        </div>
+        {% empty %}
+        <p style="padding: 10px">No history found.</p>
         {% endfor %}
       </div>
-    {% empty %}
-      <p style="padding:10px;">No history found.</p>
-    {% endfor %}
-  </div>
-</div>
-<script src="/static/chat.js"></script>
-<footer class="app-footer">
-  <span>© 2026 Python Instructor Chatbot</span>
-  <span class="footer-right">
-    Built with ❤️ using Django, Marked.js & Highlight.js
-  </span>
-</footer>
-
-</body>
-
+    </div>
+    <script src="/static/chat.js"></script>
+    <footer class="app-footer">
+      <span>© 2026 Python Instructor Chatbot</span>
+      <span class="footer-right"> Created by Harsh </span>
+      <span class="footer-right"> Built with ❤️ using Python Django </span>
+    </footer>
+  </body>
 </html>

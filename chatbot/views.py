@@ -29,11 +29,11 @@ def home(request):
     messages = []
 
     if active_id:
-        active_conversation = Conversation.objects.get(id=active_id)
-        messages = active_conversation.messages.all().order_by("created_at")
-    else:
-        # 🔥 AUTO CREATE NEW CHAT
-        active_conversation = Conversation.objects.create()
+        try:
+            active_conversation = Conversation.objects.get(id=active_id)
+            messages = active_conversation.messages.all().order_by("created_at")
+        except Conversation.DoesNotExist:
+            active_conversation = None
 
     return render(request, "index.html", {
         "conversations": conversations,
