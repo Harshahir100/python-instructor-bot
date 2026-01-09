@@ -383,3 +383,17 @@ pre {
 }
 
 
+
+
+.input-box.disabled {
+  opacity: 0.6;
+}
+
+.input-box.disabled input {
+  cursor: not-allowed;
+}
+
+.input-box.disabled .send-btn {
+  background: #334155;
+  cursor: not-allowed;
+}

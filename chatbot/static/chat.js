@@ -127,5 +127,9 @@ function forcePythonCodeBlocks(text) {
 
   return "```python\n" + text + "\n```";
 }
-
+document.getElementById("input")?.addEventListener("keydown", e => {
+  if (e.key === "Enter" && e.target.disabled) {
+    alert("Click New Chat first 🙂");
+  }
+});
 

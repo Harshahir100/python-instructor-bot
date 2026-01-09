@@ -1,11 +1,15 @@
-{% if active %}
-<div class="input-box">
+<div class="input-box {% if not active %}disabled{% endif %}">
   <input
     class="input-1"
     id="input"
-    placeholder="Ask Python question..."
-    autocomplete="off"
+    placeholder="{% if active %}Ask Python question...{% else %}Click New Chat to start{% endif %}"
+    {% if not active %}disabled{% endif %}
   />
-  <button class="send-btn" onclick="send('{{ active.id }}')">➤</button>
+  <button
+    class="send-btn"
+    {% if not active %}disabled{% endif %}
+    {% if active %}onclick="send('{{ active.id }}')"{% endif %}
+  >
+    ➤
+  </button>
 </div>
-{% endif %}
