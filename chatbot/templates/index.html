@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>Python Instructor</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    
     <!-- Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -58,6 +61,30 @@
 
     <script>
       window.ACTIVE_CHAT_ID = "{{ active.id|default:'' }}";
+      
+      // Handle mobile keyboard showing/hiding
+      let lastViewportHeight = window.innerHeight;
+      
+      window.addEventListener('resize', () => {
+        const currentHeight = window.innerHeight;
+        const inputBox = document.querySelector('.input-box');
+        
+        if (currentHeight < lastViewportHeight * 0.75) {
+          // Keyboard is showing
+          inputBox?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+        lastViewportHeight = currentHeight;
+      });
+
+      // Scroll input into view when focused
+      document.getElementById('input')?.addEventListener('focus', () => {
+        setTimeout(() => {
+          document.querySelector('.input-box')?.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'end' 
+          });
+        }, 300);
+      });
     </script>
     <script src="/static/modules/scroll.js"></script>
     <script src="/static/modules/history.js"></script>

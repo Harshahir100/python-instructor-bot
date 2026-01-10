@@ -227,6 +227,7 @@
     .input-box {
       margin: 0;
       padding: 10px;
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
       gap: 8px;
       position: fixed;
       bottom: 0;
@@ -235,8 +236,10 @@
       width: 100%;
       background: #020617;
       border-top: 1px solid #1e293b;
-      z-index: 100;
+      z-index: 1000;
       box-sizing: border-box;
+      display: flex;
+      align-items: center;
     }
 
     .input-1 {
