@@ -25,3 +25,23 @@ document.getElementById("input")?.addEventListener("keydown", (e) => {
     }
   }
 });
+
+// Sidebar toggle handler (desktop/mobile)
+document.getElementById("sidebar-toggle")?.addEventListener("click", () => {
+  const app = document.querySelector(".app");
+  if (!app) return;
+  app.classList.toggle("sidebar-collapsed");
+});
+
+// Mobile sidebar open/close helpers used by inline onclicks in templates
+function toggleSidebar() {
+  const app = document.querySelector(".app");
+  if (!app) return;
+  app.classList.toggle("sidebar-open");
+}
+
+function closeSidebar() {
+  const app = document.querySelector(".app");
+  if (!app) return;
+  app.classList.remove("sidebar-open");
+}

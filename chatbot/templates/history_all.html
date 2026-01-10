@@ -2,15 +2,26 @@
 <html>
   <head>
     <title>All Chat History</title>
-
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
+    />
     <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
     <div class="app">
       <div class="sidebar">
+        <button class="close-btn" onclick="closeSidebar()">✖</button>
         <button onclick="location.href='/'">⬅ Back to Chat</button>
         <button class="danger" onclick="deleteAll()">🗑 Delete All</button>
       </div>
+
+      <!-- MOBILE TOPBAR (visible on small screens) -->
+      <header class="mobile-topbar">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <div class="mobile-title">All Chat History</div>
+        <button class="mobile-add" onclick="newChat()">➕</button>
+      </header>
 
       <div class="chat-area history-page">
         <h1 class="page-title">📜 All Chat History</h1>
@@ -49,5 +60,6 @@
       <span class="footer-right"> Created by Harsh </span>
       <span class="footer-right"> Built with ❤️ using Python Django </span>
     </footer>
+    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
   </body>
 </html>

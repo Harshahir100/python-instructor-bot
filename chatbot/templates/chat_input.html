@@ -1,9 +1,19 @@
-<div class="input-box">
-  <input
-    class="input-1"
-    id="input"
-    placeholder="Ask Python question..."
-    autocomplete="off"
-  />
-  <button class="send-btn" onclick="handleSend()">➤</button>
+<div class="input-box mobile-input-wrapper">
+  <div class="mobile-input-inner">
+    <button class="mobile-add" aria-label="add">＋</button>
+    <input
+      class="input-1 mobile-input"
+      id="input"
+      placeholder="Ask Python question..."
+      autocomplete="off"
+      inputmode="text"
+    />
+    <button
+      class="send-btn mobile-send"
+      onclick="handleSend()"
+      aria-label="send"
+    >
+      ➤
+    </button>
+  </div>
 </div>

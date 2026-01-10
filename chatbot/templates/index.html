@@ -3,8 +3,11 @@
   <head>
     <title>Python Instructor</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
-    
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+
     <!-- Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -30,6 +33,7 @@
     <div class="app">
       <!-- SIDEBAR -->
       <div class="sidebar">
+        <button class="close-btn" onclick="closeSidebar()">✖</button>
         <button onclick="newChat()">➕ New Chat</button>
         <button onclick="location.href='/history-all/'">📜 View History</button>
         <button class="danger" onclick="deleteAll()">🗑 Delete All</button>
@@ -39,12 +43,24 @@
           <div
             class="chat-item {% if active and c.id == active.id %}active{% endif %}"
           >
-            <a href="/?c={{ c.id }}">{{ c.title }}</a>
+            <a href="/?c={{ c.id }}" onclick="closeSidebar()">
+              {{ c.title }}
+            </a>
+
             <span onclick="deleteChat('{{ c.id }}')">✖</span>
           </div>
           {% endfor %}
         </div>
       </div>
+
+      <!-- MOBILE TOPBAR (visible on small screens) -->
+      <header class="mobile-topbar">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <div class="mobile-title">Python Instructor</div>
+        <button class="history-btn" onclick="location.href='/history-all/'">
+          📜
+        </button>
+      </header>
 
       <!-- CHAT -->
       <div class="chat-area">
@@ -61,30 +77,33 @@
 
     <script>
       window.ACTIVE_CHAT_ID = "{{ active.id|default:'' }}";
-      
+
       // Handle mobile keyboard showing/hiding
       let lastViewportHeight = window.innerHeight;
-      
-      window.addEventListener('resize', () => {
+
+      window.addEventListener("resize", () => {
         const currentHeight = window.innerHeight;
-        const inputBox = document.querySelector('.input-box');
-        
+        const inputBox = document.querySelector(".input-box");
+
         if (currentHeight < lastViewportHeight * 0.75) {
           // Keyboard is showing
-          inputBox?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          inputBox?.scrollIntoView({ behavior: "smooth", block: "end" });
         }
         lastViewportHeight = currentHeight;
       });
 
       // Scroll input into view when focused
-      document.getElementById('input')?.addEventListener('focus', () => {
+      document.getElementById("input")?.addEventListener("focus", () => {
         setTimeout(() => {
-          document.querySelector('.input-box')?.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'end' 
+          document.querySelector(".input-box")?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
           });
         }, 300);
       });
+
+
+      
     </script>
     <script src="/static/modules/scroll.js"></script>
     <script src="/static/modules/history.js"></script>
@@ -96,5 +115,6 @@
       <span class="footer-right"> Created by Harsh </span>
       <span class="footer-right"> Built with ❤️ using Python Django </span>
     </footer>
+    <div class="sidebar-overlay" onclick="closeSidebar()"></div>
   </body>
 </html>
