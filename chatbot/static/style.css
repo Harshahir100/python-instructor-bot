@@ -209,11 +209,23 @@
     color: white;
     font-size: 14px;
     outline: none;
+    width: 94%;
+    
+    
+    
+  }
+
+  .input-2{
+    width: 93%;
+   
+    display: flex;
+
   }
 
   .input-1:focus {
     border-color: #2563eb;
     box-shadow: 0 0 0 1px #2563eb55;
+    
   }
 
   /* SEND BUTTON */
@@ -226,6 +238,7 @@
     font-size: 16px;
     cursor: pointer;
     transition: all .2s ease;
+    
   }
 
   .send-btn:hover {
@@ -453,12 +466,7 @@
       font-size: 16px;
     }
 
-    .input-1 {
-      height: 44px;
-      font-size: 14px;
-      padding: 10px 12px;
-      flex: 1;
-    }
+ */
 
     .send-btn {
       padding: 0 16px;
