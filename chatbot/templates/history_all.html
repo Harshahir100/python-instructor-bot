@@ -13,26 +13,36 @@
       </div>
 
       <div class="chat-area history-page">
-        <h2 style="padding: 10px">📜 All Conversations</h2>
+        <h1 class="page-title">📜 All Chat History</h1>
 
-        {% for convo in conversations %}
-        <div style="padding: 10px; border-bottom: 1px solid #334155">
-          <h3>{{ convo.title }}</h3>
-          {% for msg in convo.messages.all %}
-          <a href="/?c={{ convo.id }}" class="history-link">
-            <div class="{{ msg.role }} history-preview">
-              {{ msg.content|truncatechars:220 }}
-              <div class="read-more">Click chat to read more →</div>
+        <div class="history-container">
+          {% for convo in conversations %}
+          <div class="history-card">
+            <div class="history-header">
+              <h3 class="history-convo-title">{{ convo.title }}</h3>
+              <a href="/?c={{ convo.id }}" class="history-card-link">Open →</a>
             </div>
-          </a>
 
+            <div class="history-messages">
+              {% for msg in convo.messages.all %}
+              <a href="/?c={{ convo.id }}" class="history-link">
+                <div class="{{ msg.role }} history-preview">
+                  {{ msg.content|truncatechars:220 }}
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+          {% empty %}
+          <div class="no-history">
+            <p>📭 No chat history found</p>
+            <a href="/" class="btn-primary">Start a New Chat</a>
+          </div>
           {% endfor %}
         </div>
-        {% empty %}
-        <p style="padding: 10px">No history found.</p>
-        {% endfor %}
       </div>
     </div>
+    <script src="/static/modules/history.js"></script>
     <script src="/static/chat.js"></script>
     <footer class="app-footer">
       <span>© 2026 Python Instructor Chatbot</span>

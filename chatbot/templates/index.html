@@ -49,13 +49,20 @@
           {% for m in messages %}
           <div class="{{ m.role }}">{{ m.content|linebreaks }}</div>
           {% endfor %}
+          <div id="scroll-anchor"></div>
+          <!-- 🔥 THIS -->
         </div>
-
-       {% include "chat_input.html" %}
-
+        {% include "chat_input.html" %}
       </div>
     </div>
 
+    <script>
+      window.ACTIVE_CHAT_ID = "{{ active.id|default:'' }}";
+    </script>
+    <script src="/static/modules/scroll.js"></script>
+    <script src="/static/modules/history.js"></script>
+    <script src="/static/modules/utils.js"></script>
+    <script src="/static/modules/send.js"></script>
     <script src="/static/chat.js"></script>
     <footer class="app-footer">
       <span>© 2026 Python Instructor Chatbot</span>
