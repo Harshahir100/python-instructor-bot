@@ -209,7 +209,7 @@
     color: white;
     font-size: 14px;
     outline: none;
-    width: 94%;
+    /* width: 94%; */
     
     
     
@@ -217,7 +217,6 @@
 
   .input-2{
     width: 93%;
-   
     display: flex;
 
   }
@@ -880,4 +879,33 @@ pre {
 .input-box.disabled .send-btn {
   background: #334155;
   cursor: not-allowed;
+}
+
+
+body {
+  margin: 0;
+  background: #0b0b0b;
+  color: #ccc;
+  font-family: monospace;
+}
+
+#loader {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+pre {
+  font-size: 18px;
+}
+
+#status {
+  opacity: 0.6;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
 }

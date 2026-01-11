@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from groq import Groq
 from .models import Conversation, Message
 
+
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
@@ -129,3 +130,11 @@ def view_history_all(request):
     return render(request, "history_all.html", {
         "conversations": conversations
     })
+def loader(request):
+    return render(request, "loader.html")
+
+# def home(request):
+#     return render(request, "home.html")
+
+def health(request):
+    return JsonResponse({"status": "ok"})
