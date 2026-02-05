@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{% load static %}
+
+<!doctype html>
 <html>
   <head>
     <title>All Chat History</title>
@@ -12,7 +14,7 @@
     <div class="app">
       <div class="sidebar">
         <button class="close-btn" onclick="closeSidebar()">✖</button>
-        <button onclick="location.href='/'">⬅ Back to Chat</button>
+        <button onclick="location.href = '/'">⬅ Back to Chat</button>
         <button class="danger" onclick="deleteAll()">🗑 Delete All</button>
       </div>
 

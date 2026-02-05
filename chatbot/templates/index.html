@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{% load static %}
+
+<!doctype html>
 <html>
   <head>
     <title>Python Instructor</title>
@@ -28,6 +30,13 @@
 
     <!-- Your CSS -->
     <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="static/style.css">
+
+
+
   </head>
   <body>
     <h1>Website Loaded 🚀</h1>
@@ -37,7 +46,9 @@
       <div class="sidebar">
         <button class="close-btn" onclick="closeSidebar()">✖</button>
         <button onclick="newChat()">➕ New Chat</button>
-        <button onclick="location.href='/history-all/'">📜 View History</button>
+        <button onclick="location.href = '/history-all/'">
+          📜 View History
+        </button>
         <button class="danger" onclick="deleteAll()">🗑 Delete All</button>
 
         <div class="history">
@@ -59,7 +70,7 @@
       <header class="mobile-topbar">
         <button class="menu-btn" onclick="toggleSidebar()">☰</button>
         <div class="mobile-title">Python Instructor</div>
-        <button class="history-btn" onclick="location.href='/history-all/'">
+        <button class="history-btn" onclick="location.href = '/history-all/'">
           📜
         </button>
       </header>
